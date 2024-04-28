@@ -5,6 +5,7 @@ MYSQL
 
 LARAVEL 10
 ## instalasi
+menggunakan gitbash
 git clone https://github.com/Dilla-N/gallery.git
 
 composer install
