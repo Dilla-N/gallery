@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedInteger('user_id');
             $table->string('caption');
-            $table->string('category');
+            $table->string('album');
             $table->string('image');
             $table->timestamps();
         });

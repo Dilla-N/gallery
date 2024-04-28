@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Album;
+use App\Models\GalerImage;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image as Image;
-use App\Models\GalerImage;
 
 class ImageController extends Controller
 {
@@ -12,10 +13,10 @@ class ImageController extends Controller
     {
         $request->validate([
             'caption'=>'required|max:255',
-            'category'=>'required',
+            'album'=>'required',
             'image'=>'required|image|mimes:png,jpg,jpeg,bmp'
         ],[
-            'category.required'=>'Please select a category'
+            'album.required'=>'Please select a category'
         ]);
 
         if($request->hasFile('image')){
@@ -33,17 +34,29 @@ class ImageController extends Controller
          
 
         }
-
+       
         GalerImage::create([
             'user_id'=>auth()->id(),
             'caption'=>$request->caption,
-            'category'=>$request->category,
+            'album'=>$request->album,
             'image'=>$image_name
         ]);
-
+        $album = Album::all();
         return redirect()->back()->with('success',' Foto Berhasil di Tambahkan.');
 
 
         
+    }
+    public function deleteimage($id){
+        $image = GalerImage::where('id', $id)->first();
+        if ($image != null) {
+      
+        $image ->delete();
+
+        return redirect()->back()->with('success',' Foto Berhasil di hapus.');
+    }
+    else
+
+    return redirect()->back()->with('danger',' data tidak ada');
     }
 }

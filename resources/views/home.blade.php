@@ -10,34 +10,44 @@
                         <div>GALLERY PHOTO</div>
                         <div>
 
-                            <form class="form-inline">
-                            <select class="form-control" onchange="sort_by(this.value)">
-                                <option value="terbaru" {{((Request::query('sort_by') && Request::query('sort_by')=='terbaru' ) || !Request::query('sort_by') )?'selected':''}}>Terbaru</option>
-                                <option value="terakhir" {{(Request::query('sort_by') && Request::query('sort_by')=='terakhir')?'selected':''}}>Terakhir</option>
-                            </select>
-                            </form>
+                          
                         </div>
                     </div>
                 </div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+                  @if (session('status'))
+                      <div class="alert alert-success" role="alert">
+                          {{ session('status') }}
+                      </div>
+                  @endif
 
-                    <div class="row">
-                        <div class="col-md-3">
-                          <p>Di Filter Oleh Kategori</p>
-                          <div class="list-group">
-                              <a href="javascript:filter_image('')" class="list-group-item list-group-item-action {{(!Request::query('category'))?'active':''}}">Semua</a>
-                              <a href="javascript:filter_image('twopiece')" class="list-group-item list-group-item-action {{(Request::query('category')=='twopiece')?'active':''}}">Two Piece</a>
-                              <a href="javascript:filter_image('fairytape')" class="list-group-item list-group-item-action {{(Request::query('category')=='fairytape')?'active':''}}">Fairy Tape</a>
-                              <a href="javascript:filter_image('jujurkasian')" class="list-group-item list-group-item-action {{(Request::query('category')=='jujurkasian')?'active':''}}">Jujur Kasian</a>
-                          </div>
+                  <a href="/buat-album" class="btn btn-primary">Create Album</a>
+                  <a href="/deletes" class="btn btn-danger">Delete Album</a>
+
+                  <p>list album</p>
+                  <div class="row mt-3">
+                    <div class="col-sm-2 mb-2">
+                        <div class="card ">
+                            <div class="card-body {{(Request::query('album')) ? '' : ' bg-primary '}}">
+                                <a href="javascript:filter_image('')" class="list-group-item list-group-item-action {{(Request::query('album')) ? '' : 'active bg-primary text-white'}}">Semua</a>
+                            </div>
                         </div>
-                        <div class="col-md-9">
+                    </div>
+                    @foreach($albums as $item)
+                    <div class="col-sm-2 mb-2">
+                        <div class="card {{(Request::query('album')==$item->id) ? 'bg-primary' : ''}}">
+                            <div class="card-body">
+                                <a href="javascript:filter_image('{{ $item->id }}')" class="list-group-item list-group-item-action {{(Request::query('album')==$item->id) ? 'active text-white' : ''}}">{{ $item->nama }}</a>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+                  
+                 
+             
+                    
 
                             <div class="row">
                                   <div class="col-md-12">
@@ -50,6 +60,13 @@
                                     @endforeach
                                   @endif
 
+                                  <p>urutan foto</p>
+                                  <form class="form-inline mb-5">
+                                    <select class="form-control" onchange="sort_by(this.value)">
+                                        <option value="terbaru" {{((Request::query('sort_by') && Request::query('sort_by')=='terbaru' ) || !Request::query('sort_by') )?'selected':''}}>Terbaru</option>
+                                        <option value="terakhir" {{(Request::query('sort_by') && Request::query('sort_by')=='terakhir')?'selected':''}}>Terakhir</option>
+                                    </select>
+                                    </form>
                                     <button data-toggle="collapse"  class="btn btn-success" data-target="#demo">Tambah Foto</button>
 
                                     <div id="demo" class="collapse">
@@ -61,12 +78,13 @@
                                               <input type="text" name="caption" class="form-control" placeholder="Masukkan Keterangan" id="caption">
                                             </div>
                                             <div class="form-group">
-                                                <label for="category">Pilih Daftar Album</label>
-                                                <select name="category" class="form-control" id="category">
-                                                  <option value="">Pilih Kategori</option>
-                                                  <option value="twopiece">Two Piece</option>
-                                                  <option value="fairytape">Fairy Tape</option>
-                                                  <option value="jujurkasian">Jujur Kasian</option>
+                                                <label for="album">Pilih Daftar Album</label>
+                                                <select name="album" class="form-control" id="album">
+                                             
+                                                  <option value="twopiece">Pilih Kategori</option>
+                                                  @foreach ($albums as $item)
+                                                  <option value="{{$item->id}}">{{ $item->nama}}</option>
+                                                  @endforeach
                                                 </select>
                                               </div>
                                               <div class="form-group">
@@ -102,27 +120,38 @@
                                       </div>
                                   </div>
 
-                          <div class="col-md-12 mt-4">
+                          <div class="col-md-12 mt-2">
                               <div class="row">
 
                                 @if(count($images))
 
                                   @foreach($images as $image)
                                     <div class="col-md-3 mb-4">
-                                          <a href="#">
+                                          <a href="{{asset('user_images/'.$image->image)}}" class="fancybox" data-caption="{{$image->caption}}" data-id="{{$image->id}}" data-fancybox="gallery">
                                               <img src="{{asset('user_images/thumb/'.$image->image)}}" height="100%" width="100%">
+                                            
                                           </a> 
+                                          <div class="mt-1">
+                                            <form class="main-form mb-5" action="/hapus/{{$image->id}}" method="POST">
+                                              <input type="hidden" class="form-control" value="{{$image->id}}" placeholder="Nama Kategori">
+                                              @csrf
+                                                
+                                                <button type="submit" class="btn btn-danger"> Delete</button>
+                                              </form>
+                                          </div>
+                                        
                                     </div>
                                   @endforeach
-
+                                    
                                   @else
                                     <div class="col-md-12">
-                                      <p>Gambar Tidak di Temukan</p>
+
                                     </div>
                                 @endif
 
                                 @if(count($images))
                                   <div class="col-md-12">
+                                    <br>
                                     {{$images->appends(Request::query())->links()}}
                                   </div>
                                 @endif
@@ -148,6 +177,7 @@
 
 
 @section('js')
+
 <script type="text/javascript">
 
   var query={};
@@ -169,7 +199,6 @@
     Object.assign(query,{'sort_by':value});
     window.location.href="{{route('home')}}"+'?'+$.param(query);
   }
-
 
 
   $("#image_upload_form").validate({
