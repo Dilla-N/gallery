@@ -50,5 +50,6 @@ Registrasi , login ,Menambah ALbum , Meghapus Album , Membuat foto , Menghapus f
 untuk menggunakan fitur tambah album dll pasitkan untuk login?registerasi terlebih dahulu
 
 ## UML
-![Uploading 324863259-c21f2c45-3804-4ff5-8521-a8aac742e45a.png…]()
+![324863259-c21f2c45-3804-4ff5-8521-a8aac742e45a](https://github.com/Dilla-N/gallery/assets/168327966/fca99440-e294-4fb8-9fa8-1565cc0e02d5)
+
 
