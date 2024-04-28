@@ -52,4 +52,7 @@ untuk menggunakan fitur tambah album dll pasitkan untuk login?registerasi terleb
 ## UML
 ![324863259-c21f2c45-3804-4ff5-8521-a8aac742e45a](https://github.com/Dilla-N/gallery/assets/168327966/fca99440-e294-4fb8-9fa8-1565cc0e02d5)
 
+## ERD 
+![Screenshot (269)](https://github.com/Dilla-N/gallery/assets/168327966/5621879f-2a11-45c7-ab2a-da85fc6cbd47)
+
 
