@@ -23,7 +23,7 @@
                   @endif
 
                   <a href="/buat-album" class="btn btn-primary">Create Album</a>
-                  <a href="/deletes" class="btn btn-danger">Delete Album</a>
+                  <a href="/delete" class="btn btn-danger">Delete Album</a>
 
                   <p>list album</p>
                   <div class="row mt-3">
