@@ -1,66 +1,64 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+## Website Gallery Foto
+PHP 8.1
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+MYSQL
 
-## About Laravel
+LARAVEL 10
+## instalasi
+menggunakan gitbash
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+pastikan ketik cd .. sampai ke folder yang ingin dituju
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+git clone https://github.com/Dilla-N/gallery.git
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+jika sudah di clone silahkan gunakan commmand cd gallery sebelum install composer
 
-## Learning Laravel
+composer install
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+change env.example env.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+php artisan key:generate
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+pastikan sebelum menggunakan migrate sudah ada database nya terlebih dahulu di mysql jika belum tidak apa-apa jika nanti migrate menyuruh untuk membuat database ketik yes
 
-## Laravel Sponsors
+php artisan migrate:fresh
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+php artisan serve
 
-### Premium Partners
+Jika menggunakan Xampp harap ubah extension gd di php.ini
+## cara mengubah gd extension di xampp
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+1.buka folder xampp
 
-## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+![Screenshot (264)](https://github.com/Dilla-N/gallery/assets/168327966/39189ab4-b53a-498e-a9bd-a2eae69d3ede)
 
-## Code of Conduct
+2.buka folder php
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-## Security Vulnerabilities
+![Screenshot (265)](https://github.com/Dilla-N/gallery/assets/168327966/ffea3822-49d3-4861-846a-314d5ab7b0fc)
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+3.klik file php.ini
 
-## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+![Screenshot (266)](https://github.com/Dilla-N/gallery/assets/168327966/84f4aa79-8570-4e9a-85cd-8189aefb7338)
+
+4.ubah gd extension dengan menghapus ; di depannya
+
+
+![Screenshot (267)](https://github.com/Dilla-N/gallery/assets/168327966/92ef8444-f36c-4cb8-a985-4463754795a5)
+
+
+## Penjelasan 
+Aplikasi ini berguna untuk membuat galeri foto 
+memiliki fitur
+Registrasi , login ,Menambah ALbum , Meghapus Album , Membuat foto , Menghapus foto,
+untuk menggunakan fitur tambah album dll pasitkan untuk login?registerasi terlebih dahulu
+
+## UML
+![324863259-c21f2c45-3804-4ff5-8521-a8aac742e45a](https://github.com/Dilla-N/gallery/assets/168327966/fca99440-e294-4fb8-9fa8-1565cc0e02d5)
+
+## ERD 
+![Screenshot (269)](https://github.com/Dilla-N/gallery/assets/168327966/5621879f-2a11-45c7-ab2a-da85fc6cbd47)
+
+
